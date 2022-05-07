@@ -7,7 +7,7 @@ function EditUser(){
     const [is401, setIs401] = useState(false);
     const [is403, setIs403] = useState(false);
     const urlPut = 'https://ingweb-back-hiriart.herokuapp.com/api/users';
-    const urlGet = 'https://ingweb-back-hiriart.herokuapp.com/users/full-match/';
+    const urlGet = 'https://ingweb-back-hiriart.herokuapp.com/api/users/full-match/';
     const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
