@@ -6,9 +6,9 @@ function GetUsers(){
     const [is400, setIs400] = useState(false);
     const [is401, setIs401] = useState(false);
     const [is403, setIs403] = useState(false);
-    const urlGet = 'https://localhost:7017/api/users'
-    const urlCheckLogin = 'https://localhost:7017/api/auth/checklogin'
-    const urlCheckAdmin = 'https://localhost:7017/api/auth/checkadmin'
+    const urlGet = 'https://ingweb-back-hiriart.herokuapp.com/api/users'
+    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
+    const urlCheckAdmin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checkadmin'
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isRole, setIsRole] = useState(false);
     const [successGet, setSuccessGet] = useState(null);

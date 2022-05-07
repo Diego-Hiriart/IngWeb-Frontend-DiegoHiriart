@@ -6,9 +6,9 @@ function EditUser(){
     const [is400, setIs400] = useState(false);
     const [is401, setIs401] = useState(false);
     const [is403, setIs403] = useState(false);
-    const urlPut = 'https://localhost:7017/api/users';
-    const urlGet = 'https://localhost:7017/api/users/full-match/';
-    const urlCheckLogin = 'https://localhost:7017/api/auth/checklogin'
+    const urlPut = 'https://ingweb-back-hiriart.herokuapp.com/api/users';
+    const urlGet = 'https://ingweb-back-hiriart.herokuapp.com/users/full-match/';
+    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     let [userPut, setuserPut] = useState(null);

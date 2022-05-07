@@ -3,7 +3,7 @@ import {User} from "../../Models/User.ts"
 
 function CreateUser(){
     //There is no log in and authorization control for user creation, since people need to be able to create a user
-    const urlPost = 'https://localhost:7017/api/users';
+    const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/users';
     const [user, setUser] = useState(new User());
     const [success, setSuccess] = useState(null);
 

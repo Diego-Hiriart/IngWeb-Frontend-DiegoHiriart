@@ -6,8 +6,8 @@ function SearchUsers(){
     const [is400, setIs400] = useState(false);
     const [is401, setIs401] = useState(false);
     const [is403, setIs403] = useState(false);
-    const urlGet = 'https://localhost:7017/api/users/partial-match/'
-    const urlCheckLogin = 'https://localhost:7017/api/auth/checklogin'
+    const urlGet = 'https://ingweb-back-hiriart.herokuapp.com/api/users/partial-match/'
+    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [users, setUsers] = useState(null);//users is empty by default
     const [successGet, setSuccessGet] = useState(null);
