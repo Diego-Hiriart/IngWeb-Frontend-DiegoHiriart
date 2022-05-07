@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 
 function Logout(){
     let navigate = useNavigate();
-    const urlCheckLogin = 'https://localhost:7017/api/auth/checklogin'
+    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     console.log(JSON.parse(localStorage.getItem("authToken")))
 

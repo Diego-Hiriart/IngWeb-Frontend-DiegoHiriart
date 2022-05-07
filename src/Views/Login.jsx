@@ -4,8 +4,8 @@ import {Credentials} from "../Models/Credentials.ts";
 
 function Login(){
     let navigate = useNavigate();
-    const urlLogin = 'https://localhost:7017/api/auth/login';
-    const urlCheckLogin = 'https://localhost:7017/api/auth/checklogin'
+    const urlLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/login';
+    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
     const [credentials, setCredentials] = useState(new Credentials());
     const inputStyle = {'margin':'4px'};
     const [isLoggedIn, setIsLoggedIn] = useState(false);

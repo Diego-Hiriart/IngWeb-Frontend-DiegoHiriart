@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 
 function Account(){
     let navigate = useNavigate();
-    const urlCheckLogin = 'https://localhost:7017/api/auth/checklogin'
+    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     //Check if the user is logged in as soon as this page is entered
