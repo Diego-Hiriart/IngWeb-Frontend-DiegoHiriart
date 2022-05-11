@@ -1,7 +1,7 @@
 import {React} from "react";
 
 const AuthCheck = async () =>{
-    const urlCheckLogin = 'https://localhost:7017/api/auth/check'
+    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/check'
     console.log(JSON.parse(localStorage.getItem("authToken")))
     const requestOptions = {
         method: 'POST',
