@@ -1,37 +1,33 @@
 import {React, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom"
+import AuthCheck from "../Components/AuthCheck";
 
 function Logout(){
     let navigate = useNavigate();
-    const urlCheckLogin = 'https://localhost:7017/api/auth/checklogin'
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [response, setResponse] = useState(null)
+    const [is401, setIs401] = useState(true);
     console.log(JSON.parse(localStorage.getItem("authToken")))
 
     //Check if the user is logged in as soon as this page is entered
     useEffect(() => {
-        checklogin();
-    }, [isLoggedIn])  
+        AuthCheck().then((status) => setResponse(status))
+    }, [])
 
-    //Checks if the token currently stored is valid
-    function checklogin(){
-        console.log(JSON.parse(localStorage.getItem("authToken")))
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
-        };
-        fetch(urlCheckLogin, requestOptions)
-            .then(res => {
-                if(res.ok){//If not ok, token must be invalid
-                    setIsLoggedIn(true);
-                }else{
-                    setIsLoggedIn(false);
-                }
-            });
-    }
+    //Check what to do with the response
+    useEffect(() => {      
+        if(response == 200){
+            setIs401(false)
+        }else if(response == 401){
+            setIs401(true)
+        }else if(response == 403){
+            setIs401(false)
+        }
+        console.log(response)
+    }, [response])  
 
     const content =
     <div className="container">
-        {isLoggedIn === true ?
+        {is401 === true ?
             <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%', flexDirection:'column'}}>
                 {localStorage.removeItem("authToken")}
                 <h5><br/><b>You have logged out</b></h5>
