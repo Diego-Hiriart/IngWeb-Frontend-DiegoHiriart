@@ -1,38 +1,34 @@
 import {React, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom"
 import {Credentials} from "../Models/Credentials.ts";
+import AuthCheck from "../Components/AuthCheck";
 
 function Login(){
     let navigate = useNavigate();
+    const [response, setResponse] = useState(null)
+    const [is401, setIs401] = useState(true);
     const urlLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/login';
-    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
     const [credentials, setCredentials] = useState(new Credentials());
     const inputStyle = {'margin':'4px'};
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [logInResult, setLogInResult] = useState("")
     const [success, setSuccess] = useState(null);
 
     //Check if the user is logged in as soon as this page is entered
     useEffect(() => {
-        checklogin();
-    }, [isLoggedIn])  
+        AuthCheck().then((status) => setResponse(status))
+    }, [])
 
-    //Checks if the token currently stored is valid
-    function checklogin(){
-        console.log(JSON.parse(localStorage.getItem("authToken")))
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
-        };
-        fetch(urlCheckLogin, requestOptions)
-            .then(res => {
-                if(res.ok){//If not ok, token must be invalid
-                    setIsLoggedIn(true);
-                }else{
-                    setIsLoggedIn(false);
-                }
-            });
-    }
+    //Check what to do with the response
+    useEffect(() => {      
+        if(response == 200){
+            setIs401(false)
+        }else if(response == 401){
+            setIs401(true)
+        }else if(response == 403){
+            setIs401(false)
+        }
+        console.log(response)
+    }, [response])  
 
     function tryLogin(){
         const requestOptions = {
@@ -52,7 +48,7 @@ function Login(){
                     res.text()
                     .then(text => setLogInResult(text.toString()))
                     .then(text => console.log(text.toString()))
-                    setIsLoggedIn(false)
+                    setIs401(true)
                     setSuccess(false)
                 }
             });
@@ -69,7 +65,7 @@ function Login(){
     const content=       
         <div className="container">
             <h2>Log in to your account</h2>
-            {isLoggedIn === false && success !== true &&
+            {is401 === true && success !== true &&
                 <>
                 <br/>
                 <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%', flexDirection:'column'}}>
@@ -86,7 +82,7 @@ function Login(){
                 }
                 </>
             }
-            {isLoggedIn === true &&
+            {is401 === false &&
                 <>
                 <br/>
                 <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%', flexDirection:'column'}}>

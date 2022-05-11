@@ -1,15 +1,13 @@
 import {React, useEffect, useState, createRef } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthCheck from "../../Components/AuthCheck";
 
 function EditUser(){
     let navigate = useNavigate();
-    const [is400, setIs400] = useState(false);
+    const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(false);
-    const [is403, setIs403] = useState(false);
     const urlPut = 'https://ingweb-back-hiriart.herokuapp.com/api/users';
     const urlGet = 'https://ingweb-back-hiriart.herokuapp.com/api/users/full-match/';
-    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     let [userPut, setuserPut] = useState(null);
     const [searchParam, setSearchParam] = useState(//"searchParam" object
@@ -26,25 +24,20 @@ function EditUser(){
 
     //Check if the user is logged in as soon as this page is entered
     useEffect(() => {
-        checklogin();
-    }, [isLoggedIn])  
+        AuthCheck().then((status) => setResponse(status))
+    }, [])
 
-    //Checks if the token currently stored is valid
-    function checklogin(){
-        console.log(JSON.parse(localStorage.getItem("authToken")))
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
-        };
-        fetch(urlCheckLogin, requestOptions)
-            .then(res => {
-                if(res.ok){//If not ok, token must be invalid
-                    setIsLoggedIn(true);
-                }else{
-                    setIsLoggedIn(false);
-                }
-            });
-    }
+    //Check what to do with the response
+    useEffect(() => {      
+        if(response == 200){
+            setIs401(false)
+        }else if(response == 401){
+            setIs401(true)
+        }else if(response == 403){
+            setIs401(false)
+        }
+        console.log(response)
+    }, [response])  
 
     //Function to send GET request
     function search(){
@@ -64,7 +57,6 @@ function EditUser(){
                 }else if(res.status === 400){
                     setSuccessGet(false)
                     setSuccessPut(null);//Reset so it doesnt show the old result message
-                    setIs400(true)
                 }else if(res.status === 401){
                     setSuccessGet(false);
                     setSuccessPut(null);//Reset so it doesnt show the old result message
@@ -72,7 +64,6 @@ function EditUser(){
                 }else if(res.status === 403){
                     setSuccessGet(false);
                     setSuccessPut(null);
-                    setIs403(true)
                 }
             }
         )
@@ -137,7 +128,7 @@ function EditUser(){
             </div>
         </div>
 
-    if(!isLoggedIn){
+    if(is401){
         content =
             <div className="container">
                 <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width: '70%'}}>
@@ -146,7 +137,7 @@ function EditUser(){
                 </div>
             </div>
     }else {
-        if((successGet && !is401 && !is403) || is400){
+        if((successGet && !is401)){
             content =
                 <div className="container">
                     <div style={{display: 'flex', 'flexDirection':'column',  justifyContent:'normal', alignItems:'normal', width: '70%'}}>

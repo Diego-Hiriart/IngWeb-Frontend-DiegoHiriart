@@ -1,16 +1,13 @@
-import {React, useEffect, useState } from "react";
+import {Fragment, React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthCheck from "../../Components/AuthCheck";
 
 function DeleteUser(){
     let navigate = useNavigate();
-    const [is400, setIs400] = useState(false);
-    const [is401, setIs401] = useState(false);
-    const [is403, setIs403] = useState(false);
-    const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/users/';//https://localhost:7017
-    const urlCheckLogin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checklogin'
-    const urlCheckAdmin = 'https://ingweb-back-hiriart.herokuapp.com/api/auth/checkadmin'
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isRole, setIsRole] = useState(false);
+    const [response, setResponse] = useState(null)
+    const [is401, setIs401] = useState(true);
+    const [is403, setIs403] = useState(true);
+    const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/users/';
     const [searchParam, setSearchParam] = useState(//"searchParam" object
         {
             id: ''//property
@@ -20,43 +17,23 @@ function DeleteUser(){
 
     //Check if the user is logged in as soon as this page is entered
     useEffect(() => {
-        checklogin();
-        checkRole();
-    }, [isLoggedIn])  
+        AuthCheck().then((status) => setResponse(status))
+    }, [])
 
-    //Checks if the token currently stored is valid
-    function checklogin(){
-        console.log(JSON.parse(localStorage.getItem("authToken")))
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
-        };
-        fetch(urlCheckLogin, requestOptions)
-            .then(res => {
-                if(res.ok){//If not ok, token must be invalid
-                    setIsLoggedIn(true);
-                }else{
-                    setIsLoggedIn(false);
-                }
-            });
-    }
-
-    //Checks if the token currently stored has a valid role
-    function checkRole(){
-        console.log(JSON.parse(localStorage.getItem("authToken")))
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
-        };
-        fetch(urlCheckAdmin, requestOptions)
-            .then(res => {
-                if(res.ok){//If not ok, token must be invalid
-                    setIsRole(true);
-                }else{
-                    setIsRole(false);
-                }
-            });
-    }
+    //Check what to do with the response
+    useEffect(() => {      
+        if(response == 200){
+            setIs401(false)
+            setIs403(false)
+        }else if(response == 401){
+            setIs401(true)
+            setIs403(true)
+        }else if(response == 403){
+            setIs401(false)
+            setIs403(true)
+        }
+        console.log(response)
+    }, [response])  
 
     //Function to send DELETE request
     function deltUser(){
@@ -69,15 +46,8 @@ function DeleteUser(){
             .then(res => {
                 if(res.ok){               
                     setSuccessDel(true);
-                }else if(res.status === 400){
+                }else{
                     setSuccessDel(false);
-                    setIs400(true)
-                }else if(res.status === 401){
-                    setSuccessDel(false);
-                    setIs401(true);
-                }else if(res.status === 403){
-                    setSuccessDel(false);
-                    setIs403(true);
                 }
             }) 
     }
@@ -103,7 +73,7 @@ function DeleteUser(){
             </div>       
         </div>
 
-    if(!isLoggedIn){
+    if(is401){
         content =
             <div className="container">
                 <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width: '70%'}}>
@@ -112,7 +82,7 @@ function DeleteUser(){
                 </div>
             </div>
     }else {
-        if(!isRole){
+        if(is403){
             content =
                 <div className="container">
                     <div style={{display: 'flex', flexDirection:'column',  justifyContent:'center', alignItems:'center', width: '70%'}}>
@@ -120,7 +90,7 @@ function DeleteUser(){
                         <button onClick={() => {navigate("/users")}}>Return to menu</button>
                     </div>
                 </div>
-        }else if((!is401 && !is403) || is400){
+        }else if(!is401 && !is403){
             content =
                 <div className="container">
                     <div style={{display: 'flex', 'flexDirection':'column',  justifyContent:'normal', alignItems:'normal', width: '70%'}}>
