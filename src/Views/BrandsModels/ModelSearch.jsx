@@ -1,51 +1,61 @@
-import {React, useEffect, useState } from "react";
+import {React, useEffect, useState, createRef } from "react";
+import { format, parseISO } from 'date-fns';
 
 function ModelSearch(){
     const [brands, setBrands] = useState(null);
     const [models, setModels] = useState(null);
+    const [modelInfo, setModelInfo] = useState(null);
     const urlGetBrands = 'https://localhost:7017/api/brands'
-    const urlGetModels = 'https://localhost:7017/api/models/by-brand/'
-    const [successGet, setSuccessGet] = useState(null);
+    const urlGetBrandModels = 'https://localhost:7017/api/models/by-brand/'
+    const urlSearchModel = 'https://localhost:7017/api/models/search/'
+    const selectedModelRef = createRef();
 
     //Function to send GET request
     const getBrands = async () => {
         const requestOptions = {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            headers: { 'Content-Type': 'application/json' },
         };
         await fetch(urlGetBrands, requestOptions)
         .then(res => {
             if(res.ok){
                 res.json()
                 .then(json => setBrands(json));
-                setSuccessGet(true);
-            }else if(res.status === 400){
-                setSuccessGet(false);
             }
         })
     }
 
-    const getBrandModels = async () =>{
+    const getBrandModels = async (evt) =>{
+        const selectedBrand = evt.target.value;
+        setModels(null);//Reset to rerender
+        setModelInfo(null);
+        selectedModelRef.current.value = "default";
         const requestOptions = {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            headers: { 'Content-Type': 'application/json'}
         };
-        await fetch(urlGetModels, requestOptions)
+        await fetch(urlGetBrandModels+selectedBrand, requestOptions)
         .then(res => {
             if(res.ok){
                 res.json()
                 .then(json => setModels(json));
-                setSuccessGet(true);
-            }else if(res.status === 400){
-                setSuccessGet(false);
             }
         })
     }
 
-    const searchModel = async () => {
-
+    const searchModel = async (evt) => {
+        const selectedModel = evt.target.value;
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        };
+        await fetch(urlSearchModel+selectedModel, requestOptions)
+        .then(res => {
+            if(res.ok){
+                res.json()
+                .then(json => setModelInfo(json));
+            }
+        })
     }
 
     //Request only runs when url changes
@@ -70,7 +80,8 @@ function ModelSearch(){
                         )
                     }
                 </select>
-                <select name="models" id="model" onChange={searchModel} style={inputStyle}>
+                <select name="models" id="model" defaultValue={"default"} ref={selectedModelRef} onChange={searchModel} style={inputStyle}>
+                    <option value={"default"} disabled>Choose an option</option>
                     {models &&
                         models.map(
                             (model) => (<option value={model.modelId}>{model.name} ({model.modelNumber})</option>)
@@ -81,22 +92,22 @@ function ModelSearch(){
                     <thead>
                         <tr style={tableStyle}>
                             <th style={tableStyle}>ID</th>
-                            <th style={tableStyle}>Brand</th>
                             <th style={tableStyle}>Model number</th>
                             <th style={tableStyle}>Name</th>
                             <th style={tableStyle}>Launch date</th>
                             <th style={tableStyle}>Discontinued</th>
                         </tr>
                     </thead>
+                    {modelInfo &&
                     <tbody>
-                        {models &&
-                            models.map(
-                                (model) => 
-                                (<td style={tableStyle}></td>
-                                )
-                            )                            
-                        }
-                    </tbody>
+                        {console.log(modelInfo[0].launchDate)}
+                        <td style={tableStyle}>{modelInfo[0].modelId}</td>                       
+                        <td style={tableStyle}>{modelInfo[0].modelNumber}</td>
+                        <td style={tableStyle}>{modelInfo[0].name}</td>
+                        <td style={tableStyle}>{format(new Date(modelInfo[0].launch), "yyy-MM-dd")}</td>
+                        <td style={{tableStyle, textAlign:"center"}}><input type="checkbox" checked={modelInfo[0].discontinued} disabled="true"/></td>
+                    </tbody>                       
+                    }
                 </table>
             </div>
         </div>
