@@ -9,7 +9,7 @@ function ManageBrands(){
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
     const [is403, setIs403] = useState(true);
-    const urlGetBrands = 'https://localhost:7017/api/brands'
+    const urlGetBrands = 'https://ingweb-back-hiriart.herokuapp.com/api/brands'
     const [brands, setBrands] = useState(null);//Empty by default
     const [editBrandId, setEditBrandId] = useState(null);//To check if someting is being edited
     const [brandForm, setBrandForm] = useState({
@@ -82,7 +82,7 @@ function ManageBrands(){
         event.preventDefault();
 
         const create = async (brand) => {
-            const urlPost = 'https://localhost:7017/api/brands';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/brands';
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
@@ -113,7 +113,7 @@ function ManageBrands(){
         event.preventDefault();
 
         const edit = async (brand) => {
-            const urlPost = 'https://localhost:7017/api/brands';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/brands';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -159,7 +159,7 @@ function ManageBrands(){
     }
 
     const handleDeleteClick = async (brandId) => {
-        const urlDel = 'https://localhost:7017/api/brands/';
+        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/brands/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 

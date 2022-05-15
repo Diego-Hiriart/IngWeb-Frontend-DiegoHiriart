@@ -9,8 +9,8 @@ function ManageModels(){
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
     const [is403, setIs403] = useState(true);
-    const urlGetModels = 'https://localhost:7017/api/models/get-all'
-    const urlGetBrands = 'https://localhost:7017/api/brands'
+    const urlGetModels = 'https://ingweb-back-hiriart.herokuapp.com/api/models/get-all'
+    const urlGetBrands = 'https://ingweb-back-hiriart.herokuapp.com/api/brands'
     const [models, setModels] = useState(null);//Empty by default
     const [brands, setBrands] = useState(null);//Empty by default, needed for creation and editing
     const [editModelId, setEditModelId] = useState(null);//To check if someting is being edited
@@ -104,7 +104,7 @@ function ManageModels(){
         event.preventDefault();
 
         const create = async (model) => {
-            const urlPost = 'https://localhost:7017/api/models';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/models';
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
@@ -138,7 +138,7 @@ function ManageModels(){
         event.preventDefault();
 
         const edit = async (model) => {
-            const urlPost = 'https://localhost:7017/api/models';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/models';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -190,7 +190,7 @@ function ManageModels(){
     }
 
     const handleDeleteClick = async (modelId) => {
-        const urlDel = 'https://localhost:7017/api/models/';
+        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/models/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 

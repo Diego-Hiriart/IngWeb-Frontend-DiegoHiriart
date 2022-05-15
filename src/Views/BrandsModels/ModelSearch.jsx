@@ -5,9 +5,9 @@ function ModelSearch(){
     const [brands, setBrands] = useState(null);
     const [models, setModels] = useState(null);
     const [modelInfo, setModelInfo] = useState(null);
-    const urlGetBrands = 'https://localhost:7017/api/brands'
-    const urlGetBrandModels = 'https://localhost:7017/api/models/by-brand/'
-    const urlSearchModel = 'https://localhost:7017/api/models/search/'
+    const urlGetBrands = 'https://ingweb-back-hiriart.herokuapp.com/api/brands'
+    const urlGetBrandModels = 'https://ingweb-back-hiriart.herokuapp.com/api/models/by-brand/'
+    const urlSearchModel = 'https://ingweb-back-hiriart.herokuapp.com/api/models/search/'
     const selectedModelRef = createRef();
 
     //Function to send GET request

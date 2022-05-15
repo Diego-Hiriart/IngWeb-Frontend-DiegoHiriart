@@ -7,10 +7,10 @@ function AdminEditUser(){
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
     const [is403, setIs403] = useState(true);
-    const urlDel = 'https://localhost:7017/api/users/';
-    const urlGetUser = 'https://localhost:7017/api/users/full-match/';
-    const urlGetProfile = 'https://localhost:7017/api/profiles/search/';
-    const urlRoleControl = 'https://localhost:7017/api/profiles/role-control'
+    const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/users/';
+    const urlGetUser = 'https://ingweb-back-hiriart.herokuapp.com/api/users/full-match/';
+    const urlGetProfile = 'https://ingweb-back-hiriart.herokuapp.com/api/profiles/search/';
+    const urlRoleControl = 'https://ingweb-back-hiriart.herokuapp.com/api/profiles/role-control'
     const [user, setUser] = useState(null);
     const [profile, setProfile] = useState(null);
     const [isAdminRole, setIsAdminRole] = useState(false);
