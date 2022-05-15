@@ -1,6 +1,6 @@
 import {React, useEffect, useState, Fragment } from "react";
-import ReadRowModel from './Components/ReadRowBrand';
-import EditableRowModel from './Components/EditableRowBrand';
+import ReadRowModel from './Components/ReadRowModel';
+import EditableRowModel from './Components/EditableRowModel';
 import { useNavigate } from "react-router-dom";
 import AuthCheck from "../../Components/AuthCheck";
 
@@ -249,6 +249,7 @@ function ManageModels(){
                                             <th style={tableStyle}>Name</th>
                                             <th style={tableStyle}>Launch date</th>
                                             <th style={tableStyle}>Discontinued</th>
+                                            <th style={tableStyle}>Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -259,7 +260,7 @@ function ManageModels(){
                                                     if it is null it means the user does not want to edit anything, this is seen when the editing is done or canceled*/}
                                                     {editModelId === model.modelId ?  
                                                     <EditableRowModel model={model} brands={brands} handleFormChange={handleFormChange} handleCancelClick={handleCancelClick}/> :
-                                                    <ReadRowModel model = {model} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>}  
+                                                    <ReadRowModel model = {model} brands={brands} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>}  
                                                 </Fragment>
                                             ))
                                         }                            
@@ -267,7 +268,7 @@ function ManageModels(){
                                 </table>
                             </form>
                             <div style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
-                                <h2>Create a new brand</h2>
+                                <h2>Create a new model</h2>
                                 <form onSubmit={handleAddFormSubmit} style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'normal', width: '70%'}}>                            
                                     <label>Brand </label>
                                     <select name="brandId" id="brand" defaultValue={"default"} onChange={handleFormChange} style={inputStyle}>
@@ -283,10 +284,10 @@ function ManageModels(){
                                     <label>Name </label>
                                     <input type="text" name="name" required="required" placeholder="name" onChange={handleFormChange} style={inputStyle}/>
                                     <label>Launch date </label>
-                                    <input type="date" name="launch" required="requiered" placeholder="launch date" onChange={handleFormChange} style={inputStyle}></input>
+                                    <input type="date" name="launch" required="required" placeholder="launch date" onChange={handleFormChange} style={inputStyle}></input>
                                     <label>Discontinued </label>
                                     <input type="checkbox" name="discontinued" onChange={handleFormChange} style={inputStyle}/>
-                                    <button type="submit" style={spacedStyle}>Add brand</button>
+                                    <button type="submit" style={spacedStyle}>Add model</button>
                                 </form>
                             </div>
                         </div>

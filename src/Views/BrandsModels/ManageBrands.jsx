@@ -215,6 +215,7 @@ function ManageBrands(){
                                             <th style={tableStyle}>Brand ID</th>
                                             <th style={tableStyle}>Name</th>
                                             <th style={tableStyle}>Is defunct</th>
+                                            <th style={tableStyle}>Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
