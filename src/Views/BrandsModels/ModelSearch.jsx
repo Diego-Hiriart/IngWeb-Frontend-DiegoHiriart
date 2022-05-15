@@ -105,7 +105,7 @@ function ModelSearch(){
                         <td style={tableStyle}>{modelInfo[0].modelNumber}</td>
                         <td style={tableStyle}>{modelInfo[0].name}</td>
                         <td style={tableStyle}>{format(new Date(modelInfo[0].launch), "yyy-MM-dd")}</td>
-                        <td style={{tableStyle, textAlign:"center"}}><input type="checkbox" checked={modelInfo[0].discontinued} disabled="true"/></td>
+                        <td style={{tableStyle, textAlign:"center"}}><input type="checkbox" checked={modelInfo[0].discontinued} disabled={true}/></td>
                     </tbody>                       
                     }
                 </table>
