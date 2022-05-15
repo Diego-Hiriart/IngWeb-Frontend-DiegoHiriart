@@ -7,7 +7,7 @@ function BrandsModelsMenu(){
     return(
         <div className="container">
             <div style={{display: 'flex',  justifyContent:'normal', alignItems:'center', width: '70%'}}>
-                <h1>Users CRUD operations</h1>
+                <h1>Models and brands</h1>
             </div>
             <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                 <button onClick={() => {navigate("/brands-models/model-search")}} style={spacedStyle}>Search for a model</button>
