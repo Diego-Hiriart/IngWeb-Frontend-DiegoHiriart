@@ -34,7 +34,7 @@ function SearchUsers(){
 
 
     //Function to send GET request
-    function search(){
+    const search = async () =>{
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 

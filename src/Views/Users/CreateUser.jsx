@@ -8,7 +8,7 @@ function CreateUser(){
     const [success, setSuccess] = useState(null);
 
     //Function to send POST request
-    function create(){
+    const create = async () =>{
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 
@@ -16,7 +16,7 @@ function CreateUser(){
             body: JSON.stringify(user)
         };
         console.log(JSON.stringify(user))
-        fetch(urlPost, requestOptions)
+        await fetch(urlPost, requestOptions)
             .then(res => {
                 if(res.ok){
                     setSuccess(true)

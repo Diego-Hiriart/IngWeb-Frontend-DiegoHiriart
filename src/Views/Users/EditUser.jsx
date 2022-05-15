@@ -40,14 +40,14 @@ function EditUser(){
     }, [response])  
 
     //Function to send GET request
-    function search(){
+    const search = async () =>{
         setSearchParam({email : searchInput.current.value})
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
             'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
         };     
-        fetch(urlGet+searchParam.email, requestOptions)
+        await fetch(urlGet+searchParam.email, requestOptions)
             .then(res => {
                 if(res.ok){
                     res.json()

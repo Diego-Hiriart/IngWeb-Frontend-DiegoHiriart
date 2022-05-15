@@ -30,14 +30,14 @@ function Login(){
         console.log(response)
     }, [response])  
 
-    function tryLogin(){
+    const tryLogin = async () =>{
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(credentials)
         };
         console.log(JSON.stringify(credentials))
-        fetch(urlLogin, requestOptions)
+        await fetch(urlLogin, requestOptions)
             .then(res => {
                 if(res.ok){
                     res.text()//Get the responde text, it has the token
