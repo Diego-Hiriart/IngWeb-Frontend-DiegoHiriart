@@ -8,7 +8,7 @@ import GetUsers from "./Views/Users/GetUsers";
 import SearchUsers from "./Views/Users/SearchUsers";
 import CreateUser from "./Views/Users/CreateUser";
 import EditUser from "./Views/Users/EditUser";
-import DeleteUser from "./Views/Users/DeleteUser";
+import AdminEditUser from "./Views/Users/AdminEditUser";
 import Home from "./Views/Home";
 import Error from "./Views/404";
 
@@ -31,7 +31,7 @@ function App() {
           <Route path="/users/search" element={<SearchUsers/>}/>
           <Route path="/users/create" element={<CreateUser/>}/>
           <Route path="/users/edit" element={<EditUser/>}/>
-          <Route path="/users/delete" element={<DeleteUser/>}/>
+          <Route path="/users/admin-control" element={<AdminEditUser/>}/>
           <Route path="*" element={<Error/>}/>{/*If a bad route is given*/}
         </Routes>
       </Router>

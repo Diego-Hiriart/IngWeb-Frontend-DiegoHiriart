@@ -14,7 +14,7 @@ function UsersMenu(){
                 <button onClick={() => {navigate("/users/search")}} style={spacedStyle}>Search for a user</button>
                 <button onClick={() => {navigate("/users/create")}} style={spacedStyle}>Create new user</button>
                 <button onClick={() => {navigate("/users/edit")}} style={spacedStyle}>Edit user</button>
-                <button onClick={() => {navigate("/users/delete")}} style={spacedStyle}>Delete user</button>
+                <button onClick={() => {navigate("/users/admin-control")}} style={spacedStyle}>Admin control for users</button>
             </div>
         </div>
     );

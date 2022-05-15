@@ -33,13 +33,13 @@ function GetUsers(){
     }, [response])  
 
     //Function to send GET request
-    const getAll = () => {
+    const getAll = async () => {
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
             'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
         };
-        fetch(urlGet, requestOptions)
+        await fetch(urlGet, requestOptions)
         .then(res => {
             if(res.ok){
                 res.json()
