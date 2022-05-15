@@ -8,8 +8,9 @@ const Home = () => {
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', width: '70vh'}}>
                 <h1>Ingeniería Web - Diego Hiriart</h1>              
             </div>
-            <div>
+            <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70vh', gap:"5px"}}>
                 <button onClick={() => {navigate("/users")}}>Users</button>
+                <button onClick={() => {navigate("/brands-models")}}>Brands & Models</button>
             </div>
         </div>    
     );

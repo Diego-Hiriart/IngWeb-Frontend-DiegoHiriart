@@ -9,6 +9,10 @@ import SearchUsers from "./Views/Users/SearchUsers";
 import CreateUser from "./Views/Users/CreateUser";
 import EditUser from "./Views/Users/EditUser";
 import AdminEditUser from "./Views/Users/AdminEditUser";
+import BrandsModelsMenu from "./Views/BrandsModels/BrandsModelsMenu";
+import ModelSearch from "./Views/BrandsModels/ModelSearch"
+import ManageBrands from "./Views/BrandsModels/ManageBrands"
+import ManageModels from "./Views/BrandsModels/ManageModels"
 import Home from "./Views/Home";
 import Error from "./Views/404";
 
@@ -32,6 +36,10 @@ function App() {
           <Route path="/users/create" element={<CreateUser/>}/>
           <Route path="/users/edit" element={<EditUser/>}/>
           <Route path="/users/admin-control" element={<AdminEditUser/>}/>
+          <Route path="/brands-models" element={<BrandsModelsMenu/>}/>
+          <Route path="/brands-models/model-search" element={<ModelSearch/>}/>
+          <Route path="/brands-models/manage-brands" element={<ManageBrands/>}/>
+          <Route path="/brands-models/manage-models" element={<ManageModels/>}/>
           <Route path="*" element={<Error/>}/>{/*If a bad route is given*/}
         </Routes>
       </Router>
