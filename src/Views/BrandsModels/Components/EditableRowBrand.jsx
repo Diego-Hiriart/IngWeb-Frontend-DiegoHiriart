@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EditableRowBrand = ({brand, handleFormChange, handleCancelClick}) => {
-    const inputStyle = {'margin':'2px'};
+    const inputStyle = {'margin':'2px', 'width':'80%'};
     const spacedStyle = {'margin':'2px'};
     const tableStyle = {"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid', 'padding':'5px'};
     return(
