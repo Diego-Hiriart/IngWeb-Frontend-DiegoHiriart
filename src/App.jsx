@@ -13,6 +13,7 @@ import BrandsModelsMenu from "./Views/BrandsModels/BrandsModelsMenu";
 import ModelSearch from "./Views/BrandsModels/ModelSearch"
 import ManageBrands from "./Views/BrandsModels/ManageBrands"
 import ManageModels from "./Views/BrandsModels/ManageModels"
+import ManageComponents from "./Views/BrandsModels/ManageComponents";
 import Home from "./Views/Home";
 import Error from "./Views/404";
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/brands-models/model-search" element={<ModelSearch/>}/>
           <Route path="/brands-models/manage-brands" element={<ManageBrands/>}/>
           <Route path="/brands-models/manage-models" element={<ManageModels/>}/>
+          <Route path="/brands-models/manage-components" element={<ManageComponents/>}/>
           <Route path="*" element={<Error/>}/>{/*If a bad route is given*/}
         </Routes>
       </Router>

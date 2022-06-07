@@ -2,7 +2,7 @@ import React from 'react';
 import { format } from 'date-fns';
 
 const EditableRowModel = ({model, brands, handleFormChange, handleCancelClick}) => {
-    const inputStyle = {'margin':'2px'};
+    const inputStyle = {'margin':'2px', 'width':'80%'};
     const spacedStyle = {'margin':'2px'};
     const tableStyle = {"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid', 'padding':'5px'};
     return(
