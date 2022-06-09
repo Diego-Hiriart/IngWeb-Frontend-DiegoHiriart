@@ -8,9 +8,8 @@ function CreatePost(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const [is403, setIs403] = useState(true);
-    const urlGetPosts = 'https://localhost:7017/api/posts/by-user-auto'
-    const urlGetModels = 'https://localhost:7017/api/models/get-all'
+    const urlGetPosts = 'https://ingweb-back-hiriart.herokuapp.com/api/posts/by-user-auto'
+    const urlGetModels = 'https://ingweb-back-hiriart.herokuapp.com/api/models/get-all'
     const [posts, setPosts] = useState(null);//Empty by default
     const [models, setModels] = useState(null);//Empty by default
     const [editPostId, setEditPostId] = useState(null);//To check if someting is being edited

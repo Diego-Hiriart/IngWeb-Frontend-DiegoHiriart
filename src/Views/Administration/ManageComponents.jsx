@@ -9,7 +9,7 @@ function ManageComponents(){
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
     const [is403, setIs403] = useState(true);
-    const urlGetComponents = 'https://localhost:7017/api/components'
+    const urlGetComponents = 'https://ingweb-back-hiriart.herokuapp.com/api/components'
     const [components, setComponents] = useState(null);//Empty by default
     const [editComponentId, setEditComponentId] = useState(null);//To check if someting is being edited
     const [componentForm, setComponentForm] = useState({
@@ -83,7 +83,7 @@ function ManageComponents(){
         event.preventDefault();
 
         const create = async (component) => {
-            const urlPost = 'https://localhost:7017/api/components';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/components';
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
@@ -114,7 +114,7 @@ function ManageComponents(){
         event.preventDefault();
 
         const edit = async (component) => {
-            const urlPost = 'https://localhost:7017/api/components';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/components';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -160,7 +160,7 @@ function ManageComponents(){
     }
 
     const handleDeleteClick = async (componentId) => {
-        const urlDel = 'https://localhost:7017/api/components/';
+        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/components/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
