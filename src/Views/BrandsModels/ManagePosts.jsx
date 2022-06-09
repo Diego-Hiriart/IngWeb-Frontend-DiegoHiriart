@@ -8,7 +8,6 @@ function CreatePost(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const [is403, setIs403] = useState(true);
     const urlGetPosts = 'https://localhost:7017/api/posts/by-user-auto'
     const urlGetModels = 'https://localhost:7017/api/models/get-all'
     const [posts, setPosts] = useState(null);//Empty by default
