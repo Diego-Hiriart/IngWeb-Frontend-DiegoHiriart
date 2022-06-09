@@ -10,10 +10,13 @@ import CreateUser from "./Views/Users/CreateUser";
 import EditUser from "./Views/Users/EditUser";
 import AdminEditUser from "./Views/Users/AdminEditUser";
 import BrandsModelsMenu from "./Views/BrandsModels/BrandsModelsMenu";
-import ModelSearch from "./Views/BrandsModels/ModelSearch"
-import ManageBrands from "./Views/BrandsModels/ManageBrands"
-import ManageModels from "./Views/BrandsModels/ManageModels"
-import ManageComponents from "./Views/BrandsModels/ManageComponents";
+import ModelSearch from "./Views/BrandsModels/ModelSearch";
+import CreatePost from "./Views/BrandsModels/CreatePost";
+import ManagePosts from "./Views/BrandsModels/ManagePosts";
+import AdminMenu from "./Views/Administration/AdminMenu";
+import ManageBrands from "./Views/Administration/ManageBrands";
+import ManageModels from "./Views/Administration/ManageModels";
+import ManageComponents from "./Views/Administration/ManageComponents";
 import Home from "./Views/Home";
 import Error from "./Views/404";
 
@@ -39,9 +42,12 @@ function App() {
           <Route path="/users/admin-control" element={<AdminEditUser/>}/>
           <Route path="/brands-models" element={<BrandsModelsMenu/>}/>
           <Route path="/brands-models/model-search" element={<ModelSearch/>}/>
-          <Route path="/brands-models/manage-brands" element={<ManageBrands/>}/>
-          <Route path="/brands-models/manage-models" element={<ManageModels/>}/>
-          <Route path="/brands-models/manage-components" element={<ManageComponents/>}/>
+          <Route path="/brands-models/create-post" element={<CreatePost/>}/>
+          <Route path="/brands-models/manage-posts" element={<ManagePosts/>}/>
+          <Route path="/admin/" element={<AdminMenu/>}/>
+          <Route path="/admin/brands" element={<ManageBrands/>}/>
+          <Route path="/admin/models" element={<ManageModels/>}/>
+          <Route path="/admin/components" element={<ManageComponents/>}/>
           <Route path="*" element={<Error/>}/>{/*If a bad route is given*/}
         </Routes>
       </Router>

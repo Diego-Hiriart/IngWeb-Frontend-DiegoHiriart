@@ -7,13 +7,12 @@ function BrandsModelsMenu(){
     return(
         <div className="container">
             <div style={{display: 'flex',  justifyContent:'normal', alignItems:'center', width: '70%'}}>
-                <h1>Models and brands</h1>
+                <h1>Brands & Models</h1>
             </div>
             <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                 <button onClick={() => {navigate("/brands-models/model-search")}} style={spacedStyle}>Search for a model</button>
-                <button onClick={() => {navigate("/brands-models/manage-brands")}} style={spacedStyle}>Manage brands</button>
-                <button onClick={() => {navigate("/brands-models/manage-models")}} style={spacedStyle}>Manage models</button>
-                <button onClick={() => {navigate("/brands-models/manage-components")}} style={spacedStyle}>Manage components</button>
+                <button onClick={() => {navigate("/brands-models/create-post")}} style={spacedStyle}>Create post</button>
+                <button onClick={() => {navigate("/brands-models/manage-posts")}} style={spacedStyle}>Manage your posts</button>
             </div>
         </div>
     );
