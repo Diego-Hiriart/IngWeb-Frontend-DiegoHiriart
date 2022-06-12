@@ -86,7 +86,7 @@ function ManageBrands(){
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
-                'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
+                'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken"))},
                 body: JSON.stringify(brand)
             };
             console.log(JSON.stringify(brand))
@@ -117,7 +117,7 @@ function ManageBrands(){
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
-                'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+                'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
                 body: JSON.stringify(brand)
             };
             console.log(JSON.stringify(brand))
@@ -163,7 +163,7 @@ function ManageBrands(){
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) }
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) }
         };
         await fetch(urlDel+brandId, requestOptions)
             .then(res => {

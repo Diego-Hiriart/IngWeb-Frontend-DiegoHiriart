@@ -108,7 +108,7 @@ function ManageModels(){
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
-                'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
+                'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken"))},
                 body: JSON.stringify(model)
             };
             console.log(JSON.stringify(model))
@@ -142,7 +142,7 @@ function ManageModels(){
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
-                'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+                'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
                 body: JSON.stringify(model)
             };
             console.log(JSON.stringify(model))
@@ -194,7 +194,7 @@ function ManageModels(){
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) }
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) }
         };
         await fetch(urlDel+modelId, requestOptions)
             .then(res => {

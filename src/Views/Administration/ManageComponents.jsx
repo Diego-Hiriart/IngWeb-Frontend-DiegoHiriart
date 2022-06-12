@@ -48,7 +48,7 @@ function ManageComponents(){
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json',
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken"))},
         };
         await fetch(urlGetComponents, requestOptions)
         .then(res => {
@@ -87,7 +87,7 @@ function ManageComponents(){
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
-                'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
+                'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken"))},
                 body: JSON.stringify(component)
             };
             console.log(JSON.stringify(component))
@@ -118,7 +118,7 @@ function ManageComponents(){
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
-                'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+                'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
                 body: JSON.stringify(component)
             };
             console.log(JSON.stringify(component))
@@ -164,7 +164,7 @@ function ManageComponents(){
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) }
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) }
         };
         await fetch(urlDel+componentId, requestOptions)
             .then(res => {

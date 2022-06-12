@@ -45,7 +45,7 @@ function EditUser(){
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
         };     
         await fetch(urlGet+searchParam.email, requestOptions)
             .then(res => {
@@ -80,7 +80,7 @@ function EditUser(){
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
             body: JSON.stringify(userPut)
         };
         fetch(urlPut, requestOptions)

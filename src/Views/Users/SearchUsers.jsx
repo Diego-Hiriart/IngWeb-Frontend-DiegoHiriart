@@ -38,7 +38,7 @@ function SearchUsers(){
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
         };
         fetch(urlGet+searchParam.email, requestOptions)
             .then(res => {

@@ -41,8 +41,8 @@ function Login(){
             .then(res => {
                 if(res.ok){
                     res.text()//Get the responde text, it has the token
-                    .then(text => localStorage.setItem("authToken", JSON.stringify(text)));//Save the token to local storage, its a browser thing
-                    console.log(localStorage.getItem("authToken"))
+                    .then(text => localStorage.setItem("hlAuthToken", JSON.stringify(text)));//Save the token to local storage, its a browser thing
+                    console.log(localStorage.getItem("hlAuthToken"))
                     setSuccess(true)
                 }else{
                     res.text()

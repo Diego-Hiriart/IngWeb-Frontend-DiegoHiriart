@@ -6,7 +6,7 @@ function Logout(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    console.log(JSON.parse(localStorage.getItem("authToken")))
+    console.log(JSON.parse(localStorage.getItem("hlAuthToken")))
 
     //Check if the user is logged in as soon as this page is entered
     useEffect(() => {
@@ -29,7 +29,7 @@ function Logout(){
     <div className="container">
         {is401 === true ?
             <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%', flexDirection:'column'}}>
-                {localStorage.removeItem("authToken")}
+                {localStorage.removeItem("hlAuthToken")}
                 <h5><br/><b>You have logged out</b></h5>
                 <button onClick={() => {navigate("/login")}}>Log in</button>
             </div>
