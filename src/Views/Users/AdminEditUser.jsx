@@ -54,7 +54,7 @@ function AdminEditUser(){
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
         };
         fetch(urlGetUser+searchParam.email, requestOptions)
         .then(res => {
@@ -78,7 +78,7 @@ function AdminEditUser(){
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
         };
         await fetch(urlGetProfile+id, requestOptions)
             .then(res => {
@@ -103,7 +103,7 @@ function AdminEditUser(){
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
         };
         await fetch(urlDel+user[0].userID, requestOptions)
             .then(res => {
@@ -120,7 +120,7 @@ function AdminEditUser(){
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
         };
         await fetch(urlRoleControl+"?id="+user[0].userID+"&isAdmin="+isAdminRole, requestOptions)
             .then(res => {

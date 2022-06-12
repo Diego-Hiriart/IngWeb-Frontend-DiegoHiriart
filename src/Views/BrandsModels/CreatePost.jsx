@@ -35,13 +35,15 @@ function CreatePost(){
     useEffect(() => {      
         if(response == 200){
             setIs401(false)
-            getBrands();//if permissions exist, get all brands
         }else if(response == 401){
             setIs401(true)
         }else if(response == 403){
             setIs401(false)
         }
         console.log(response)
+        if(response != 401){
+            getBrands();//if permissions exist, get all brands
+        }
     }, [response])
 
     const handleFormChange = (event) => {
@@ -97,7 +99,7 @@ function CreatePost(){
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
-                'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken"))},
+                'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken"))},
                 body: JSON.stringify(post)
             };
             console.log(JSON.stringify(post))

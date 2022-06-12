@@ -12,7 +12,7 @@ function CreateUser(){
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
             body: JSON.stringify(user)
         };
         console.log(JSON.stringify(user))

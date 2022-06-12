@@ -37,7 +37,7 @@ function GetUsers(){
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) },
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) },
         };
         await fetch(urlGet, requestOptions)
         .then(res => {

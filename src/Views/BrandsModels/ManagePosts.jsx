@@ -1,5 +1,6 @@
-import {React, useEffect, useState, Fragment } from "react";
+import {React, useEffect, useState, Fragment, Link} from "react";
 import ReadRowPost from "./Components/ReadRowPost";
+import EditPost from "./EditPost";
 import { useNavigate } from "react-router-dom";
 import AuthCheck from "../../Components/AuthCheck";
 import { format } from 'date-fns';
@@ -12,20 +13,7 @@ function CreatePost(){
     const urlGetModels = 'https://localhost:7017/api/models/get-all'
     const [posts, setPosts] = useState(null);//Empty by default
     const [models, setModels] = useState(null);//Empty by default
-    const [editPostId, setEditPostId] = useState(null);//To check if someting is being edited
-    const [postForm, setPostForm] = useState({
-        postId : 0,
-        userId : 0,
-        modelId : 0,
-        postDate :	'',
-        purchase :	'',
-        firstIssues :	null,
-        innoperative :	null,
-        review : ''
-    })
 
-    const inputStyle = {'margin':'2px'};
-    const spacedStyle = {'margin':'2px'};
     const tableStyle = {"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid', 'padding':'5px', 'overflow':'auto'};
 
     //Check if the user is logged in as soon as this page is entered
@@ -37,12 +25,14 @@ function CreatePost(){
     useEffect(() => {      
         if(response == 200){
             setIs401(false)
-            getUserPosts();//if permissions exist, get all posts from current user
-            getModels();//Get all models to fill up rows
         }else if(response == 401){
             setIs401(true)
         }else if(response == 403){
             setIs401(false)
+        }
+        if(response != 401){
+            getUserPosts();//if permissions exist, get all posts from current user
+            getModels();//if permissions exist, get all models and brands
         }
         console.log(response)
     }, [response])
@@ -52,7 +42,7 @@ function CreatePost(){
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 
-            'Authorization':"bearer "+JSON.parse(localStorage.getItem("authToken")) }
+            'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) }
         };
         await fetch(urlGetPosts, requestOptions)
         .then(res => {
@@ -63,7 +53,7 @@ function CreatePost(){
         })
     }
 
-    //Function to send GET request, must still be fixed, shouldnt be getting all models, maybe just the ones linked to the user's posts (by post id or user id)
+    //Function to send GET request
     const getModels = async () => {
         const requestOptions = {
             method: 'GET',
@@ -83,19 +73,9 @@ function CreatePost(){
     const handleEditClick = (event, post) => {
         event.preventDefault();
 
-        setEditPostId(post.postId);
-        const formValues = {
-            postId : post.postId,
-            userId : post.userId,
-            modelId : post.modelId,
-            postDate :	post.postDate,
-            purchase :	post.purchase,
-            firstIssues :	post.firstIssues,
-            innoperative :	post.innoperative,
-            review : post.review
-        }
+        localStorage.setItem("hlEditPost", JSON.stringify(post));
 
-        setPostForm(formValues);
+        window.open("./edit-post", "_blank")
     }
 
     let content = 
@@ -108,42 +88,44 @@ function CreatePost(){
             </div>
         </div>
 
-if(is401){
-    content =
-        <div className="container">
-            <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width: '70%'}}>
-                <h3><br/>You must be logged in to view this</h3>
-                <button onClick={() => {navigate("/login")}}>Log in</button>
+    if(is401){
+        content =
+            <div className="container">
+                <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width: '70%'}}>
+                    <h3><br/>You must be logged in to view this</h3>
+                    <button onClick={() => {navigate("/login")}}>Log in</button>
+                </div>
             </div>
-        </div>
-}else {
-    if(!is401){
-        if(posts){//If brands array has content
+    }else {
+        if(posts && models){//If posts and models arrays have content
             content =
             <div className="container" style={{margin:'6px'}}>
                 <div style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                     <h2>Manage your posts</h2>
-                    <p>You can edit and delete posts and issues here</p> 
+                    <p>You can select a post to manage from here</p> 
                 </div>
                 <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                     <table style={{tableStyle}}>
                         <thead>
                             <tr style={tableStyle}>
+                                <th style={{tableStyle, textAlign:"center"}} colSpan="7">Post Data</th>
+                                <th style={tableStyle} rowSpan="2">Options</th>
+                            </tr>
+                            <tr>
                                 <th style={tableStyle}>Post ID</th>
                                 <th style={tableStyle}>Model</th>
                                 <th style={tableStyle}>Posted on</th>
-                                <th style={tableStyle}>Purchaed</th>
+                                <th style={tableStyle}>Purchased</th>
                                 <th style={tableStyle}>First issues appeared</th>
                                 <th style={tableStyle}>Innoperative on</th>
                                 <th style={tableStyle}>Review</th>
-                                <th style={tableStyle}>Options</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {posts != null && models != null ?
+                            {posts != null && models != null?
                                 posts.map((post) => (
                                     <Fragment>
-                                        <ReadRowPost post = {post} models={models} handleEditClick={handleEditClick}/>
+                                        <ReadRowPost post = {post} models = {models} handleEditClick={handleEditClick}/>
                                     </Fragment>
                                 ))
                                 : ""
@@ -154,7 +136,6 @@ if(is401){
             </div>
         }
     }
-}
 
     return(
         <div>

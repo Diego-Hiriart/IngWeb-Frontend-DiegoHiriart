@@ -13,6 +13,7 @@ import BrandsModelsMenu from "./Views/BrandsModels/BrandsModelsMenu";
 import ModelSearch from "./Views/BrandsModels/ModelSearch";
 import CreatePost from "./Views/BrandsModels/CreatePost";
 import ManagePosts from "./Views/BrandsModels/ManagePosts";
+import EditPost from "./Views/BrandsModels/EditPost";
 import AdminMenu from "./Views/Administration/AdminMenu";
 import ManageBrands from "./Views/Administration/ManageBrands";
 import ManageModels from "./Views/Administration/ManageModels";
@@ -44,6 +45,7 @@ function App() {
           <Route path="/brands-models/model-search" element={<ModelSearch/>}/>
           <Route path="/brands-models/create-post" element={<CreatePost/>}/>
           <Route path="/brands-models/manage-posts" element={<ManagePosts/>}/>
+          <Route path="/brands-models/edit-post" element={<EditPost/>}/>
           <Route path="/admin/" element={<AdminMenu/>}/>
           <Route path="/admin/brands" element={<ManageBrands/>}/>
           <Route path="/admin/models" element={<ManageModels/>}/>
