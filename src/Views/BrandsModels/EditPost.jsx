@@ -9,10 +9,10 @@ function EditPost(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const urlGetPostBrand = 'https://localhost:7017/api/brands/search/'
-    const urlGetPostModel = 'https://localhost:7017/api/models/search/'
-    const urlGetIssues = 'https://localhost:7017/api/issues/by-post/'
-    const urlGetComponents = 'https://localhost:7017/api/components'
+    const urlGetPostBrand = 'https://ingweb-back-hiriart.herokuapp.com/api/brands/search/'
+    const urlGetPostModel = 'https://ingweb-back-hiriart.herokuapp.com/api/models/search/'
+    const urlGetIssues = 'https://ingweb-back-hiriart.herokuapp.com/api/issues/by-post/'
+    const urlGetComponents = 'https://ingweb-back-hiriart.herokuapp.com/api/components'
     const [components, setComponents] = useState(null);//Empty by default
     const [postModel, setPostModel] = useState(null);//Empty by default
     const [postBrand, setPostBrand] = useState(null);//Empty by default
@@ -166,7 +166,7 @@ function EditPost(){
         event.preventDefault();
 
         const create = async (issue) => {
-            const urlPost = 'https://localhost:7017/api/issues';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/issues';
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
@@ -200,7 +200,7 @@ function EditPost(){
         event.preventDefault();
 
         const edit = async (post) => {
-            const urlPost = 'https://localhost:7017/api/posts';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/posts';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -236,7 +236,7 @@ function EditPost(){
         event.preventDefault();
 
         const edit = async (issue) => {
-            const urlPost = 'https://localhost:7017/api/issues';
+            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/issues';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -288,7 +288,7 @@ function EditPost(){
     }
 
     const handlePostDeleteClick = async () => {
-        const urlDel = 'https://localhost:7017/api/posts/';
+        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/posts/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
@@ -305,7 +305,7 @@ function EditPost(){
     }
 
     const handleIssueDeleteClick = async (issueId) => {
-        const urlDel = 'https://localhost:7017/api/issues/';
+        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/issues/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
