@@ -150,7 +150,7 @@ function CreatePost(){
         if(!is401){
             if(brands){//If brands array has content
                 content =
-                    <div style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
+                    <div style={{display: 'flex', flexDirection:"column", justifyContent:'center', alignItems:'center', width: '70%', margin:'0px'}}>
                         <h2>Create a new Post</h2>
                         <form onSubmit={handleAddFormSubmit} style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'normal', width: '70%'}}>                            
                             <label>Brand </label>
@@ -187,7 +187,7 @@ function CreatePost(){
     }
 
     return(
-        <div>
+        <div style={{display:'flex', justifyContent:'center'}}>
             {content}
         </div>
     )

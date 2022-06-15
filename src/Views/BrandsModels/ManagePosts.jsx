@@ -79,7 +79,7 @@ function CreatePost(){
     }
 
     let content = 
-        <div className="container" style={{margin:'6px'}}>
+        <div className="container" style={{margin:'6px', alignItems:'center'}}>
             <div style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                 <h2>Manage your posts</h2>
                 <p>Something went wrong</p>  
@@ -99,7 +99,7 @@ function CreatePost(){
     }else {
         if(posts && models){//If posts and models arrays have content
             content =
-            <div className="container" style={{margin:'6px'}}>
+            <div className="container" style={{margin:'0px', justifyContent:'center'}}>
                 <div style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                     <h2>Manage your posts</h2>
                     <p>You can select a post to manage from here</p> 
@@ -138,7 +138,7 @@ function CreatePost(){
     }
 
     return(
-        <div>
+        <div style={{display:'flex', justifyContent:'center'}}>
             {content}
         </div>
     )
