@@ -11,8 +11,9 @@ function BrandsModelsMenu(){
             </div>
             <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                 <button onClick={() => {navigate("/brands-models/model-search")}} style={spacedStyle}>Search for a model</button>
+                <button onClick={() => {navigate("/brands-models/advanced-search")}} style={spacedStyle}>Advanced search</button>
                 <button onClick={() => {navigate("/brands-models/create-post")}} style={spacedStyle}>Create post</button>
-                <button onClick={() => {navigate("/brands-models/manage-posts")}} style={spacedStyle}>Manage your posts</button>
+                <button onClick={() => {navigate("/brands-models/manage-posts")}} style={spacedStyle}>Manage your posts</button>                
             </div>
         </div>
     );
