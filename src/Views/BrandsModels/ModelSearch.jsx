@@ -114,62 +114,72 @@ function ModelSearch(){
                         )
                     }
                 </select>
-                <table style={tableStyle}>
-                    <thead>
-                        <tr style={tableStyle}>
-                            <th style={tableStyle}>ID</th>
-                            <th style={tableStyle}>Model number</th>
-                            <th style={tableStyle}>Name</th>
-                            <th style={tableStyle}>Launch date</th>
-                            <th style={tableStyle}>Discontinued</th>
-                        </tr>
-                    </thead>
-                    {modelInfo &&
-                        <tbody>
-                            <td style={tableStyle}>{modelInfo[0].modelId}</td>                       
-                            <td style={tableStyle}>{modelInfo[0].modelNumber}</td>
-                            <td style={tableStyle}>{modelInfo[0].name}</td>
-                            <td style={tableStyle}>{format(new Date(modelInfo[0].launch), "yyy-MM-dd")}</td>
-                            <td style={{tableStyle, textAlign:"center"}}><input type="checkbox" checked={modelInfo[0].discontinued} disabled={true}/></td>
-                        </tbody>                       
-                    }
-                </table>
-                <table style={tableStyle}>
-                    <thead>
-                        <tr style={tableStyle}>
-                            <th style={tableStyle}>Reviews</th>
-                            <th style={tableStyle}>Life span (years)</th>
-                            <th style={tableStyle}>Time without issues (years)</th>
-                        </tr>
-                    </thead>
-                    {modelStats &&
-                        <tbody>
-                            <td style={tableStyle}>{modelStats.totalReviews}</td>
-                            <td style={tableStyle}>{durationString(modelStats.lifeSpan)}</td>
-                            <td style={tableStyle}>{durationString(modelStats.issueFree)}</td>
-                        </tbody>
-                    }
-                </table>
-                <table style={tableStyle}>
-                    <thead>
-                        <tr style={tableStyle}>
-                            <th style={tableStyle}>Component</th>
-                            <th style={tableStyle}>Percentage of reviews with issues</th>
-                            <th style={tableStyle}>Perecentage of issues fixable</th>
-                        </tr>
-                    </thead>
-                    {modelStats && modelStats.componentIssues.length > 0?//Show only if theres something to show
-                        modelStats.componentIssues.map(compIssues =>
+                {modelStats &&
+                    <>
+                    <table style={tableStyle}>
+                        <thead>
+                            <tr style={tableStyle}>
+                                <th style={tableStyle}>ID</th>
+                                <th style={tableStyle}>Model number</th>
+                                <th style={tableStyle}>Name</th>
+                                <th style={tableStyle}>Launch date</th>
+                                <th style={tableStyle}>Discontinued</th>
+                            </tr>
+                        </thead>
+                        {modelInfo &&
                             <tbody>
-                                <td style={tableStyle}>{compIssues.component.name}</td>
-                                <td style={tableStyle}>{compIssues.percentIssues*100}%</td>
-                                <td style={tableStyle}>{compIssues.percentFixable*100}%</td>
+                                <td style={tableStyle}>{modelInfo[0].modelId}</td>                       
+                                <td style={tableStyle}>{modelInfo[0].modelNumber}</td>
+                                <td style={tableStyle}>{modelInfo[0].name}</td>
+                                <td style={tableStyle}>{format(new Date(modelInfo[0].launch), "yyy-MM-dd")}</td>
+                                <td style={{tableStyle, textAlign:"center"}}><input type="checkbox" checked={modelInfo[0].discontinued} disabled={true}/></td>
+                            </tbody>                       
+                        }
+                    </table>
+                    <table style={tableStyle}>
+                        <thead>
+                            <tr style={tableStyle}>
+                                <th style={tableStyle}>Reviews</th>
+                                <th style={tableStyle}>Life span (years)</th>
+                                <th style={tableStyle}>Time without issues (years)</th>
+                            </tr>
+                        </thead>
+                        {modelStats && modelStats.totalReviews > 0 ?
+                            <tbody>
+                                <td style={tableStyle}>{modelStats.totalReviews}</td>
+                                <td style={tableStyle}>{durationString(modelStats.lifeSpan)}</td>
+                                <td style={tableStyle}>{durationString(modelStats.issueFree)}</td>
                             </tbody>
-                        )
-                        :
-                        ""     
-                    }
-                </table>
+                            :
+                            <tbody>
+                                <td style={tableStyle} colSpan="3">No reviews have been made for this model yet</td>
+                            </tbody>
+                        }
+                    </table>
+                    <table style={tableStyle}>
+                        <thead>
+                            <tr style={tableStyle}>
+                                <th style={tableStyle}>Component</th>
+                                <th style={tableStyle}>Percentage of reviews with issues</th>
+                                <th style={tableStyle}>Perecentage of issues fixable</th>
+                            </tr>
+                        </thead>
+                        {modelStats && modelStats.componentIssues.length > 0?//Show only if theres something to show
+                            modelStats.componentIssues.map(compIssues =>
+                                <tbody>
+                                    <td style={tableStyle}>{compIssues.component.name}</td>
+                                    <td style={tableStyle}>{compIssues.percentIssues*100}%</td>
+                                    <td style={tableStyle}>{compIssues.percentFixable*100}%</td>
+                                </tbody>
+                            )
+                            :
+                            <tbody>
+                                <td style={tableStyle} colSpan="3">No reviews have been made for this model yet</td>
+                            </tbody>
+                        }
+                    </table>
+                    </>
+                }
             </div>
         </div>
 

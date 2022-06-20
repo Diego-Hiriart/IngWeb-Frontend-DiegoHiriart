@@ -77,7 +77,7 @@ function AdvancedSearch(){
                 <h1>Advanced search</h1>
                 <p>Fill out these search parameters to look for products that match your requirements</p>  
             </div>
-            <div style={{display: 'flex', flexDirection:"column",  justifyContent:'center', alignItems:'center', width: '70%'}}>
+            <div style={{display: 'flex', flexDirection:"column", justifyContent:'center', alignItems:'center', width: '100%'}}>
                 <form onSubmit={handleFormSubmit} style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'normal', width: '70%'}}>
                     <label>Minimum number of reviews </label>
                     <input type="text" name="minReviews" placeholder="minimum reviews" onChange={handleFormChange} style={inputStyle}></input>
@@ -97,6 +97,7 @@ function AdvancedSearch(){
                         <tr style={tableStyle}>
                             <th style={tableStyle}>Model</th>
                             <th style={tableStyle}>Brand</th>
+                            <th style={tableStyle}>Reviews</th>
                             <th style={tableStyle}>Life span</th>
                             <th style={tableStyle}>Issue free span</th>
                         </tr>
@@ -107,6 +108,7 @@ function AdvancedSearch(){
                             <tbody> 
                                 <td style={tableStyle}>{modelStats.model.name}</td>
                                 <td style={tableStyle}>{modelStats.brand.name}</td>
+                                <td style={tableStyle}>{modelStats.totalReviews}</td>
                                 <td style={tableStyle}>{durationString(modelStats.lifeSpan)}</td>
                                 <td style={tableStyle}>{durationString(modelStats.issueFree)}</td>
                             </tbody>
