@@ -322,7 +322,7 @@ function EditPost(){
     }
 
     let content = 
-        <div className="container" style={{margin:'6px'}}>
+        <div className="container" style={{margin:'6px', alignItems:'center'}}>
             <div style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                 <h2>Edit a post</h2>
                 <p>Something went wrong</p>  
@@ -342,12 +342,12 @@ function EditPost(){
     }else {
         if(editPost && postModel && postBrand){//If posts, postModel, and postBrand arrays have content
             content =
-            <div className="container" style={{margin:'6px'}}>
+            <div className="container" style={{margin:'0px'}}>
                 <div style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
                     <h2>Edit a post</h2>
                     <p>You can edit and delete a post and it's issues here</p> 
                 </div>
-                <div style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'center', width: '70%'}}>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', width: '70%'}}>
                     <form onSubmit={handlePostEditFormSubmit} style={{display: 'flex', flexDirection:"column", justifyContent:'space-evenly', alignItems:'normal', width: '70%'}}>                            
                         <label>Brand </label>
                         <input type="text" defaultValue={postBrand[0].name} disabled={true} style={inputStyle}></input>
@@ -434,7 +434,7 @@ function EditPost(){
     }
 
     return(
-        <div>
+        <div style={{display:'flex', justifyContent:'center', marginBottom:'20px'}}>
             {content}
         </div>
     )

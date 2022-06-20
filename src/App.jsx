@@ -11,6 +11,7 @@ import EditUser from "./Views/Users/EditUser";
 import AdminEditUser from "./Views/Users/AdminEditUser";
 import BrandsModelsMenu from "./Views/BrandsModels/BrandsModelsMenu";
 import ModelSearch from "./Views/BrandsModels/ModelSearch";
+import AdvancedSearch from "./Views/BrandsModels/AdvancedSearch";
 import CreatePost from "./Views/BrandsModels/CreatePost";
 import ManagePosts from "./Views/BrandsModels/ManagePosts";
 import EditPost from "./Views/BrandsModels/EditPost";
@@ -43,6 +44,7 @@ function App() {
           <Route path="/users/admin-control" element={<AdminEditUser/>}/>
           <Route path="/brands-models" element={<BrandsModelsMenu/>}/>
           <Route path="/brands-models/model-search" element={<ModelSearch/>}/>
+          <Route path="/brands-models/advanced-search" element={<AdvancedSearch/>}/>
           <Route path="/brands-models/create-post" element={<CreatePost/>}/>
           <Route path="/brands-models/manage-posts" element={<ManagePosts/>}/>
           <Route path="/brands-models/edit-post" element={<EditPost/>}/>
