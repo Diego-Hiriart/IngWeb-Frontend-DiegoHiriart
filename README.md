@@ -5,7 +5,7 @@ Front end for the Web Engineering course
   - https://ingweb-front-hiriart.herokuapp.com/
 
 ## In order to use this web page, you should use the following credentials to log in:
-  - User: _PublicTesting_ or _public@testing.com_
+  - User/email: _PublicTesting_ or _public@testing.com_
   - Password: testme123_
 
 
