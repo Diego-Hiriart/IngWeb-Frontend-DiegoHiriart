@@ -1,3 +1,18 @@
+# IngWeb-Frontend-DiegoHiriart
+Front end for the Web Engineering course
+
+### This react app has been deployed to Heroku, you can use it like a web page here:
+  - https://ingweb-front-hiriart.herokuapp.com/
+
+## In order to use this web page, you should use the following credentials to log in:
+  - User: 'PublicTesting' or 'public@testing.com'
+  - Password: testme123_
+
+
+
+
+# The following is just the readme created by React, iist has some useful info so I left it here:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
