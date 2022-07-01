@@ -7,10 +7,7 @@ Front end for the Web Engineering course
 ## In order to use this web page, you should use the following credentials to log in:
   - User/email: _PublicTesting_ or _public@testing.com_
   - Password: testme123_
-
-
-
-
+<br>
 # The following is just the readme created by React, iist has some useful info so I left it here:
 
 # Getting Started with Create React App
