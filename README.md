@@ -1,18 +1,27 @@
-# IngWeb-Frontend-DiegoHiriart
-Front end for the Web Engineering course
+# Web Engineering Core Project: Front-end
+This is the front-end for my Web Engineering course's main project. I used React to create this app, mostly because it is a very popular and pretty powerful library from what I had heard so far when I chose it. Using React ended up being quite a challenge but it is still a good JS library, however, in the future I would not mind exploring other options for front-end. Most of the challenge in using React came from the fact that JavaScript was almost completely new for me, so the learning curve was difficult since I had to learn JS basics and React's characteristics simultaneously. Although the web page ended up working like I wanted it to, it is very simple aesthetically and I might not have used React to its full potential, the overall look of the page and best practices for React are improvements that could be applied for the future. 
 
-### This react app has been deployed to Heroku, you can use it like a web page here:
+# Installing and running the react app locally
+
+
+
+# Deployed web page
+This react app has been deployed to Heroku, you can use it like a web page here:
   - https://ingweb-front-hiriart.herokuapp.com/
 
-## In order to use this web page, you should use the following credentials to log in:
+In order to use this web page, you should use the following credentials to log in:
   - User/email: _PublicTesting_ or _public@testing.com_
   - Password: testme123_
 
+# Core functionality of the project
+
+
+
 <br>
 <br>
 <br>
 
-# The following is just the readme created by React, iist has some useful info so I left it here:
+# The following is just the readme created by React, it has some useful info so I left it here:
 
 # Getting Started with Create React App
 
