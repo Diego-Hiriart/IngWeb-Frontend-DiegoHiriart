@@ -56,7 +56,7 @@ To ensure that there aren´t several copies of the same product, brand, or compo
 <br>
 <br>
 
-# The following is just the readme created by React, it has some useful information
+# The following is just the readme created with the React app, it has some useful information
 
 # Getting Started with Create React App
 
