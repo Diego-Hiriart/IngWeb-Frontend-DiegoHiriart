@@ -34,6 +34,12 @@ Regardless of whether you are using it locally or online, these are the general 
     - Information about the model.
     - The number of reviews, average life span and average time the model lasts without issues.
     - A list of issues for the model, ordered by component. This list indicates the percentage of reviews (shown above) that have issues in this component, and the percentage of those issues that could be fixed successfully.
+  - The _Advanced search_ option allows you to find models that adjust to your expectations. You will get a list of models, the number of reviews they have, their life span, and the time they lasted without issues. The following filters must be applied:
+    - The minimum number of reviews that model must have.
+    - The minimum average amount of time (in years) that must have passed for the model to become inoperative.
+    - The minimum amount of time (in years) that, in average, the model must have functioned without any issues.
+    - The maximum percentage of reviews for the model that have issues, this applies for any component.
+    - The minimum percentage of issues that can be fixed, this filter applies for any model and the percentage considers all issues that have been posted.
 
 # Core functionality of the project
 
