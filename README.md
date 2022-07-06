@@ -29,7 +29,7 @@ Regardless of whether you are using it locally or online, these are the general 
   - If you want to edit your username, email, or password, head to _Edit user_ once you have logged in.
   - To manage posts, that is creating, editing or deleting them, use the _Brands & Models_ option. 
     - Creating a post is pretty self-explanatory, you choose a model, select the date you purchased it and write a review. You can leave the _Date first issues appeared_ and _Date product became innoperative_ fields blank if they do not apply.
-    - In the _Manage your posts_ options, you will see a list of all your posts, clicking the edit button will open a new tab where you can edit the post, delete it, or add issues. In the same menu you can manage issues in a similar way you manage a post, you can add, edit, and delete them.
+    - In the _Manage your posts_ option, you will see a list of all your posts, clicking the edit button will open a new tab where you can edit the post, delete it, or add issues. In the same menu you can manage issues in a similar way you manage a post, you can add, edit, and delete them.
   - In the _Search for a model_ option, you just have to choose a brand and model from it. Once you choose the model, you will see:
     - Information about the model.
     - The number of reviews, average life span and average time the model lasts without issues.
