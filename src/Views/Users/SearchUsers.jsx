@@ -6,7 +6,7 @@ function SearchUsers(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const urlGet = 'https://localhost:7017/api/users/partial-match/'
+    const urlGet = `${process.env.REACT_APP_API_URL}/api/users/partial-match/`
     const [users, setUsers] = useState(null);//users is empty by default
     const [successGet, setSuccessGet] = useState(null);
     const [searchParam, setSearchParam] = useState(//"searchParam" object

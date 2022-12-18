@@ -6,10 +6,10 @@ function ModelSearch(){
     const [models, setModels] = useState(null);
     const [modelInfo, setModelInfo] = useState(null);
     const [modelStats, setModelStats] = useState(null);
-    const urlGetBrands = 'https://localhost:7017/api/brands'
-    const urlGetBrandModels = 'https://localhost:7017/api/models/by-brand/'
-    const urlSearchModel = 'https://localhost:7017/api/models/search/'
-    const urlModelStats = 'https://localhost:7017/api/stats/by-model/'
+    const urlGetBrands = `${process.env.REACT_APP_API_URL}/api/brands`
+    const urlGetBrandModels = `${process.env.REACT_APP_API_URL}/api/models/by-brand/`
+    const urlSearchModel = `${process.env.REACT_APP_API_URL}/api/models/search/`
+    const urlModelStats = `${process.env.REACT_APP_API_URL}/api/stats/by-model/`
     const selectedModelRef = createRef();
 
     //Function to send GET request

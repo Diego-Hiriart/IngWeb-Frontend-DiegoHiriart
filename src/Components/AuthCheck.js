@@ -1,7 +1,7 @@
 import {React} from "react";
 
 const AuthCheck = async () =>{
-    const urlCheckLogin = 'https://localhost:7017/api/auth/check'
+    const urlCheckLogin = `${process.env.REACT_APP_API_URL}/api/auth/check`
     console.log(JSON.parse(localStorage.getItem("hlAuthToken")))
     const requestOptions = {
         method: 'POST',

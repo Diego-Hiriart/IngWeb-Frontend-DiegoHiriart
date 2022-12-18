@@ -6,7 +6,6 @@ function Account(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     //Check if the user is logged in as soon as this page is entered
     useEffect(() => {

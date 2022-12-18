@@ -7,10 +7,10 @@ function AdminEditUser(){
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
     const [is403, setIs403] = useState(true);
-    const urlDel = 'https://localhost:7017/api/users/';
-    const urlGetUser = 'https://localhost:7017/api/users/full-match/';
-    const urlGetProfile = 'https://localhost:7017/api/profiles/search/';
-    const urlRoleControl = 'https://localhost:7017/api/profiles/role-control'
+    const urlDel = `${process.env.REACT_APP_API_URL}/api/users/`;
+    const urlGetUser = `${process.env.REACT_APP_API_URL}/api/users/full-match/`;
+    const urlGetProfile = `${process.env.REACT_APP_API_URL}/api/profiles/search/`;
+    const urlRoleControl = `${process.env.REACT_APP_API_URL}/api/profiles/role-control`
     const [user, setUser] = useState(null);
     const [profile, setProfile] = useState(null);
     const [isAdminRole, setIsAdminRole] = useState(false);

@@ -7,8 +7,9 @@ function CreatePost(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const urlGetBrands = 'https://localhost:7017/api/brands'
-    const urlGetBrandModels = 'https://localhost:7017/api/models/by-brand/'
+    const urlCreatePost = `${process.env.REACT_APP_API_URL}/api/posts`
+    const urlGetBrands = `${process.env.REACT_APP_API_URL}/api/brands`
+    const urlGetBrandModels = `${process.env.REACT_APP_API_URL}/api/models/by-brand/`
     const [models, setModels] = useState(null);//Empty by default
     const [brands, setBrands] = useState(null);//Empty by default, needed for creation and editing
     const [postForm, setPostForm] = useState({
@@ -95,7 +96,6 @@ function CreatePost(){
         event.preventDefault();
 
         const create = async (post) => {
-            const urlPost = 'https://localhost:7017/api/posts';
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
@@ -103,7 +103,7 @@ function CreatePost(){
                 body: JSON.stringify(post)
             };
             console.log(JSON.stringify(post))
-            await fetch(urlPost, requestOptions)
+            await fetch(urlCreatePost, requestOptions)
                 .then(res => {
                     if(res.ok){
                         alert("Post created successfully")
