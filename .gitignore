@@ -1,2 +1,6 @@
 #Packages
 node_modules/
+#.envs
+.env
+.env.development
+.env.*
