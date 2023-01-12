@@ -3,8 +3,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 
 const GetTokens = () => {
-  const auth0TechIssueRepoTokenURL =
-  `${process.env.REACT_APP_API_URL}/api/auth/auth0-login`;
+  const auth0TechIssueRepoTokenURL = `${process.env.REACT_APP_API_URL}/api/auth/auth0-login`;
+  const trendyClothTokenURL = `${process.env.REACT_APP_TRENDY_API}/api/auth0/checkAuth0`;
   const [userDTO, setUserDTO] = useState();
   const [logInSuccess, setLogInSuccess] = useState();
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -48,21 +48,24 @@ const GetTokens = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userDTO),
     };
-    console.log(JSON.stringify(userDTO));
-    await fetch(auth0TechIssueRepoTokenURL, requestOptions).then((res) => {
-      if (res.ok) {
-        res
-          .text() //Get the responde text, it has the token
-          .then((text) =>
-            localStorage.setItem('hlAuthToken', JSON.stringify(text))
-          ); //Save the token to local storage, its a browser thing
-        console.log(localStorage.getItem('hlAuthToken'));
-        setLogInSuccess(true);
-      } else {
-        res.text().then((text) => console.log(text.toString()));
-        setLogInSuccess(false);
-      }
-    });
+    const techIssueResponse = await fetch(auth0TechIssueRepoTokenURL, requestOptions);
+    const techIssueContent = await techIssueResponse.text();
+    if(techIssueResponse.ok){
+      localStorage.setItem('hlAuthToken', JSON.stringify(techIssueContent))
+      setLogInSuccess(true);
+    }else{
+      console.log(techIssueContent.toString());
+      setLogInSuccess(false);
+    }
+    const trendyResponse = await fetch(trendyClothTokenURL, requestOptions);
+    const trendyContent = await trendyResponse.json();
+    if(trendyResponse.ok){
+      localStorage.setItem('trendyAuthToken', JSON.stringify(trendyContent.token))
+      setLogInSuccess(true);
+    }else{
+      console.log(trendyContent.toString());
+      setLogInSuccess(false);
+    }
   };
 
   if (isLoading && logInSuccess === undefined) {

@@ -12,6 +12,7 @@ const Home = () => {
                 <button onClick={() => {navigate("/users")}}>Users</button>
                 <button onClick={() => {navigate("/brands-models")}}>Brands & Models</button>
                 <button onClick={() => {navigate("/admin")}}>Administration</button>
+                <button onClick={() => {navigate("/SSO/get")}}>SSO endpoint call</button>
             </div>
         </div>    
     );

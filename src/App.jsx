@@ -20,6 +20,7 @@ import AdminMenu from './Views/Administration/AdminMenu';
 import ManageBrands from './Views/Administration/ManageBrands';
 import ManageModels from './Views/Administration/ManageModels';
 import ManageComponents from './Views/Administration/ManageComponents';
+import SSO from './Views/SSO';
 import Home from './Views/Home';
 import Error from './Views/404';
 
@@ -68,6 +69,7 @@ function App() {
           <Route path='/admin/brands' element={<ManageBrands />} />
           <Route path='/admin/models' element={<ManageModels />} />
           <Route path='/admin/components' element={<ManageComponents />} />
+          <Route path='/SSO/get' element={<SSO />} />
           <Route path='*' element={<Error />} />
           {/*If a bad route is given*/}
         </Routes>
