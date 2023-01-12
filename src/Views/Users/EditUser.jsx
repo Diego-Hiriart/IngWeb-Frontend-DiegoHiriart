@@ -6,8 +6,8 @@ function EditUser(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(false);
-    const urlPut = 'https://ingweb-back-hiriart.herokuapp.com/api/users';
-    const urlGet = 'https://ingweb-back-hiriart.herokuapp.com/api/users/full-match/';
+    const urlPut = `${process.env.REACT_APP_API_URL}/api/users`;
+    const urlGet = `${process.env.REACT_APP_API_URL}/api/users/full-match/`;
     const [user, setUser] = useState(null);
     let [userPut, setuserPut] = useState(null);
     const [searchParam, setSearchParam] = useState(//"searchParam" object

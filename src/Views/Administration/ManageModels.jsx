@@ -9,8 +9,9 @@ function ManageModels(){
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
     const [is403, setIs403] = useState(true);
-    const urlGetModels = 'https://ingweb-back-hiriart.herokuapp.com/api/models/get-all'
-    const urlGetBrands = 'https://ingweb-back-hiriart.herokuapp.com/api/brands'
+    const urlPostPutDeleteModels = `${process.env.REACT_APP_API_URL}/api/models/`
+    const urlGetModels = `${process.env.REACT_APP_API_URL}/api/models/get-all`
+    const urlGetBrands = `${process.env.REACT_APP_API_URL}/api/brands`
     const [models, setModels] = useState(null);//Empty by default
     const [brands, setBrands] = useState(null);//Empty by default, needed for creation and editing
     const [editModelId, setEditModelId] = useState(null);//To check if someting is being edited
@@ -104,7 +105,6 @@ function ManageModels(){
         event.preventDefault();
 
         const create = async (model) => {
-            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/models';
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
@@ -112,7 +112,7 @@ function ManageModels(){
                 body: JSON.stringify(model)
             };
             console.log(JSON.stringify(model))
-            await fetch(urlPost, requestOptions)
+            await fetch(urlPostPutDeleteModels, requestOptions)
                 .then(res => {
                     if(res.ok){
                         alert("Model created successfully")
@@ -138,7 +138,6 @@ function ManageModels(){
         event.preventDefault();
 
         const edit = async (model) => {
-            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/models';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -146,7 +145,7 @@ function ManageModels(){
                 body: JSON.stringify(model)
             };
             console.log(JSON.stringify(model))
-            await fetch(urlPost, requestOptions)
+            await fetch(urlPostPutDeleteModels, requestOptions)
                 .then(res => {
                     if(res.ok){
                         getModels();//Updates table
@@ -190,13 +189,12 @@ function ManageModels(){
     }
 
     const handleDeleteClick = async (modelId) => {
-        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/models/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
             'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) }
         };
-        await fetch(urlDel+modelId, requestOptions)
+        await fetch(urlPostPutDeleteModels+modelId, requestOptions)
             .then(res => {
                 if(res.ok){
                     getModels();//Reload due to a state change

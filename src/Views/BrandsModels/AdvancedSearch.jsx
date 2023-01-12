@@ -1,7 +1,7 @@
 import {React, useState } from "react";
 
 function AdvancedSearch(){
-    const urlAdvancedSearch = 'https://ingweb-back-hiriart.herokuapp.com/api/stats/filter';
+    const urlAdvancedSearch = `${process.env.REACT_APP_API_URL}/api/stats/filter`;
     const [searchResults, setSearchResults] = useState(null);
     const [filterForm, setFilterForm] = useState({
         minReviews : 0,

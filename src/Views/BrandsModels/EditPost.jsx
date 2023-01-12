@@ -9,10 +9,12 @@ function EditPost(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const urlGetPostBrand = 'https://ingweb-back-hiriart.herokuapp.com/api/brands/search/'
-    const urlGetPostModel = 'https://ingweb-back-hiriart.herokuapp.com/api/models/search/'
-    const urlGetIssues = 'https://ingweb-back-hiriart.herokuapp.com/api/issues/by-post/'
-    const urlGetComponents = 'https://ingweb-back-hiriart.herokuapp.com/api/components'
+    const urlIssues = `${process.env.REACT_APP_API_URL}/api/issues/`
+    const urlPosts = `${process.env.REACT_APP_API_URL}/api/posts/`
+    const urlGetPostBrand = `${process.env.REACT_APP_API_URL}/api/brands/search/`
+    const urlGetPostModel = `${process.env.REACT_APP_API_URL}/api/models/search/`
+    const urlGetIssues = `${process.env.REACT_APP_API_URL}/api/issues/by-post/`
+    const urlGetComponents = `${process.env.REACT_APP_API_URL}/api/components`
     const [components, setComponents] = useState(null);//Empty by default
     const [postModel, setPostModel] = useState(null);//Empty by default
     const [postBrand, setPostBrand] = useState(null);//Empty by default
@@ -166,7 +168,6 @@ function EditPost(){
         event.preventDefault();
 
         const create = async (issue) => {
-            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/issues';
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' , 
@@ -174,7 +175,7 @@ function EditPost(){
                 body: JSON.stringify(issue)
             };
             console.log(JSON.stringify(issue))
-            await fetch(urlPost, requestOptions)
+            await fetch(urlIssues, requestOptions)
                 .then(res => {
                     if(res.ok){
                         alert("Issue created successfully")
@@ -200,7 +201,6 @@ function EditPost(){
         event.preventDefault();
 
         const edit = async (post) => {
-            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/posts';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -208,7 +208,7 @@ function EditPost(){
                 body: JSON.stringify(post)
             };
             console.log(JSON.stringify(post))
-            await fetch(urlPost, requestOptions)
+            await fetch(urlPosts, requestOptions)
                 .then(res => {
                     if(res.ok){
                         alert("Post updated");
@@ -236,7 +236,6 @@ function EditPost(){
         event.preventDefault();
 
         const edit = async (issue) => {
-            const urlPost = 'https://ingweb-back-hiriart.herokuapp.com/api/issues';
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 
@@ -244,7 +243,7 @@ function EditPost(){
                 body: JSON.stringify(issue)
             };
             console.log(JSON.stringify(issue))
-            await fetch(urlPost, requestOptions)
+            await fetch(urlIssues, requestOptions)
                 .then(res => {
                     if(res.ok){
                         getIssues();//Updates table
@@ -288,13 +287,12 @@ function EditPost(){
     }
 
     const handlePostDeleteClick = async () => {
-        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/posts/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
             'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) }
         };
-        await fetch(urlDel+editPost.postId, requestOptions)
+        await fetch(urlPosts+editPost.postId, requestOptions)
             .then(res => {
                 if(res.ok){
                     alert("Post deleted successfully")
@@ -305,13 +303,12 @@ function EditPost(){
     }
 
     const handleIssueDeleteClick = async (issueId) => {
-        const urlDel = 'https://ingweb-back-hiriart.herokuapp.com/api/issues/';
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 
             'Authorization':"bearer "+JSON.parse(localStorage.getItem("hlAuthToken")) }
         };
-        await fetch(urlDel+issueId, requestOptions)
+        await fetch(urlIssues+issueId, requestOptions)
             .then(res => {
                 if(res.ok){
                     getIssues();//Reload due to a state change

@@ -9,8 +9,8 @@ function CreatePost(){
     let navigate = useNavigate();
     const [response, setResponse] = useState(null)
     const [is401, setIs401] = useState(true);
-    const urlGetPosts = 'https://ingweb-back-hiriart.herokuapp.com/api/posts/by-user-auto'
-    const urlGetModels = 'https://ingweb-back-hiriart.herokuapp.com/api/models/get-all'
+    const urlGetPosts = `${process.env.REACT_APP_API_URL}/api/posts/by-user-auto`
+    const urlGetModels = `${process.env.REACT_APP_API_URL}/api/models/get-all`
     const [posts, setPosts] = useState(null);//Empty by default
     const [models, setModels] = useState(null);//Empty by default
 
