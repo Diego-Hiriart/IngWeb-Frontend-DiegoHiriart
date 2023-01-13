@@ -5,7 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 function Logout() {
   let navigate = useNavigate();
-  const logoutReturnURL = 'http://localhost:3000/account';
+  const logoutReturnURL = `${process.env.REACT_APP_SELF_URL}/account`;
   const [response, setResponse] = useState(null);
   const [is401, setIs401] = useState(true);
   const { logout } = useAuth0();
